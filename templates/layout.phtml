@@ -1,0 +1,35 @@
+<?php
+#require_once '../classes/init.class.php';
+
+
+?>
+<html>
+<head>
+    <title></title>
+    <meta>
+    <link type="text/css" rel="stylesheet" href="/css/style.css">
+    <style>
+
+    </style>
+
+</head>
+
+<body>
+    <?php
+    !$header? :include_once TEMPLATES.DS.'header.phtml';
+
+
+    require_once VIEWS.DS.$view.'.phtml';
+
+
+    !$footer? :include_once TEMPLATES.DS.'footer.phtml';
+    ?>
+</body>
+
+<script type="text/javascript" src="/js/script.js"></script>
+<script type="text/javascript">
+
+
+
+</script>
+</html>
