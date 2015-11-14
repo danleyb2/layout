@@ -9,19 +9,31 @@ require_once '../classes/init.class.php';
  * Time: 11:50 AM
  */
 function dispHome(){
+    /** @noinspection PhpIncludeInspection */
     include_once TEMPLATES.DS.'layout.phtml';
 }
 function disp404(){
     ob_clean();
     header('HTTP/1.0 404');
+    /** @noinspection PhpIncludeInspection */
     require_once PAGES.DS.'404.php';
 }
 function disp500(){
+    /** @noinspection PhpIncludeInspection */
     require_once PAGES.DS.'500.php';
 }
 $path=Functions::get_path();
-//Functions::print_prep($path);
 
+if(!$session->is_logged_in()){$path['call_utf8']='login';}
+if(isset($_SERVER['HTTP_AJAX'])){
+    ob_clean();
+    echo 'ajax';
+    $function=$path['call_parts'][0].'_friend';
+    $ajax=new Ajax();
+    echo is_callable(array($ajax,$function))?call_user_func($ajax->{$function}($path['call_parts'][1])):'Wrong action';
+
+    exit();
+}
 if(count($path['call_parts'])>1){
     switch ($path['call_parts'][1]){
 
@@ -41,17 +53,13 @@ if(!(file_exists(VIEWS.DS.$view.'.phtml')|file_exists(VIEWS.DS.$view.'.php'))){
 }
 
 //run php script
+/** @noinspection PhpIncludeInspection */
 include_once VIEWS.DS.$view.'.php';
 
 //include layout
-    //cache start
-include_once TEMPLATES.DS.'layout.phtml';
-    //cache end
-
+    //start caching
 /** @noinspection PhpIncludeInspection */
-/*if(!include_once PAGES . DS . $path['call_utf8'] . '.php') {
-    disp404();
-    exit();
-}*/
+include_once TEMPLATES.DS.'layout.phtml';
+    //caching end
 
 ?>
