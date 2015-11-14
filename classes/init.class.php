@@ -6,12 +6,12 @@ final class Init{
         error_reporting(E_ALL|E_STRICT);
         $this->define_configs();
         spl_autoload_register(array($this,'classLoader'));
-        if(!isset($session)) {
-            $session = new Session();
-        }
+
+        $session = new Session();
+
 
     }
-    function define_configs(){
+    private function define_configs(){
         defined('DS')?:define('DS',DIRECTORY_SEPARATOR);
         defined('SITE_ROOT')?:define('SITE_ROOT',dirname(__DIR__));
         defined('CONFIG')?:define('CONFIG',SITE_ROOT.DS.'config');
@@ -22,7 +22,7 @@ final class Init{
         defined('CACHE')?:define('CACHE',SITE_ROOT.DS.'cache');
         defined('TEMPLATES')?:define('TEMPLATES',SITE_ROOT.DS.'templates');
     }
-    function classLoader($className){
+    private function classLoader($className){
         $class_file=CLASSES.DS.strtolower($className).'.class.php';
         if(!file_exists($class_file)){
             exit('Class ['.$className.'] could not be loaded.<br> Looked in ['.$class_file.']');
@@ -32,7 +32,7 @@ final class Init{
     }
 
 }
-$session;
+
 new Init();
 
 ?>
