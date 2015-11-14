@@ -14,10 +14,12 @@ class Session
     }
     function login($user){
         $_SESSION['username']=$user['username'];
+        $_SESSION['userid']=$user['id'];
         $this->looged_in=true;
     }
-    function logout(){
+    public function logout(){
         unset($_SESSION['username']);
+        session_destroy();
         $this->looged_in=false;
     }
 
