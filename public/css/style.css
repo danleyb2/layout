@@ -1,1 +1,18 @@
 /*stylesheet*/
+ul{
+    padding: 5px;
+}
+li{
+    list-style-type: none;
+    display: inline-block;
+    padding: 2px;
+    margin-right: 5px;
+    height: 30px;
+}
+li>a{
+    text-decoration: none;
+    font-size: large;
+}
+li a:hover {
+    color: black;
+}
