@@ -95,6 +95,15 @@ class Functions {
         }
         return $path;
     }
+    public static function log($log){
+        $file=fopen(SITE_ROOT.DS.'assets'.DS.'log.txt','a');
+        if($file) {
+            fwrite($file, $log."\n");
+        }else{
+            //could not open file
+        }
+        fclose($file);
+    }
 
     /**
      * Escape the given string
