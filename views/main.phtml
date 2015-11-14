@@ -1,0 +1,30 @@
+<main>
+<p >Friends list.</p>
+<?php
+if (!$friends) {
+    echo '<h4>Could not get Friends.. Please add some first. <a href="/newfriend">Add Friend</a></h4>';
+}else{ ?>
+<?php
+while ($friend= mysqli_fetch_assoc($friends)) { ?>
+<div id="<?php echo$friend['id']; ?>" style="padding:5px;width:50%;margin:auto;">
+    <div style="width:20px;display:inline-block;"><?php echo $friend['points'];?></div>
+    <button id="" class="upvote">UP</button>
+    <button id="" class="downvote">DOWN</button>
+<div style="width:60px;display:inline-block;"><?php echo $friend['first_name'];?></div>
+<div style="width:60px;display:inline-block;"><?php echo $friend['last_name'];?></div>
+<div style="width:20px;display:inline-block;"><?php echo $friend['sex']; ?></div>
+<div style="width:20px;display:inline-block;"><?php echo $friend['age'];?></div>
+
+
+<button id="" class='edit' style="float:right; margin-left: 2px;">Edit</button>
+<button id="" class='delete' style="float:right;">Delete</button>
+
+
+</div>
+
+
+<?php } ?>
+    <a href="/newfriend">Add a new Friend</a>
+</main>
+
+<?php } ?>

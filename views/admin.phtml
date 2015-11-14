@@ -1,0 +1,23 @@
+<main>
+<p >Friends list.</p>
+
+<?php
+while ($user = mysqli_fetch_assoc($users)) { ?>
+<div style="padding:5px;width:50%;margin:auto;">
+    <button id="up">UP</button>
+    <button id="down">DOWN</button>
+<div style="width:60px;display:inline-block;"><?php echo $user['first_name'];?></div>
+<div style="width:60px;display:inline-block;"><?php echo $user['last_name'];?></div>
+<div style="width:60px;display:inline-block;"><?php echo $user['age'];?></div>
+<div style="width:20px;display:inline-block;"><?php echo $user['username']; ?></div>
+
+<button id='edit' style="float:right;">Edit</button>
+<button id='delete' style="float:right;">Delete</button>
+
+
+</div>
+
+
+<?php } ?>
+    <a href="/new">Add a new Friend</a>
+</main>
