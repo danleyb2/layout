@@ -14,11 +14,13 @@ function dispHome(){
 }
 function disp404(){
     ob_clean();
-    header('HTTP/1.0 404');
+    header('HTTP/1.0 404 Not Found');
     /** @noinspection PhpIncludeInspection */
     require_once PAGES.DS.'404.php';
 }
 function disp500(){
+    ob_clean();
+    header('HTTP/1.0 500 Internal Server Error');
     /** @noinspection PhpIncludeInspection */
     require_once PAGES.DS.'500.php';
 }
