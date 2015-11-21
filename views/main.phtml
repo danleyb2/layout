@@ -7,7 +7,7 @@ if (!$friends) {
 <?php
 while ($friend= mysqli_fetch_assoc($friends)) { ?>
 <div id="<?php echo$friend['id']; ?>" style="padding:5px;width:50%;margin:auto;">
-    <div style="width:20px;display:inline-block;"><?php echo $friend['points'];?></div>
+    <div style="width:20px;display:inline-block;" class="points"><?php echo $friend['points'];?></div>
     <button id="" class="upvote">UP</button>
     <button id="" class="downvote">DOWN</button>
 <div style="width:60px;display:inline-block;"><?php echo $friend['first_name'];?></div>
