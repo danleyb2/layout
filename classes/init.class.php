@@ -19,6 +19,7 @@ final class Init{
         defined('CLASSES')?:define('CLASSES',SITE_ROOT.DS.'classes');
         defined('PAGES')?:define('PAGES',SITE_ROOT.DS.'pages');
         defined('VIEWS')?:define('VIEWS',SITE_ROOT.DS.'views');
+        defined('SCRIPTS')?:define('SCRIPTS',SITE_ROOT.DS.'scripts');
         defined('CACHE')?:define('CACHE',SITE_ROOT.DS.'cache');
         defined('TEMPLATES')?:define('TEMPLATES',SITE_ROOT.DS.'templates');
     }
