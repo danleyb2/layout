@@ -7,6 +7,7 @@
  */
 
 $session->logout();
-Functions::redirect('main');
+//Functions::redirect('main');
+$view='login';
 
 ?>
