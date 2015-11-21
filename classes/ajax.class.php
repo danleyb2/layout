@@ -10,7 +10,7 @@ class Ajax{
         $q='update friends set points=points+1 where id='.$id;
         $rs=$this->db->query($q);
         if($rs){
-            return true;
+            return 1;
         }
         return false;
     }
@@ -18,7 +18,7 @@ class Ajax{
         $q='update friends set points=points-1 where id='.$id;
         $rs=$this->db->query($q);
         if($rs){
-            return true;
+            return -1;
         }
         return false;
     }
@@ -26,7 +26,7 @@ class Ajax{
         $q='DELETE FROM friends WHERE id='.$id.' LIMIT 1';
         $rs=$this->db->query($q);
         if($rs){
-            return true;
+            return 2;
         }
         return false;
     }
