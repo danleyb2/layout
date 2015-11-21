@@ -38,7 +38,7 @@ class Friend {
             $p.=$prop;
         }*/
     }
-    private function getDb(){
+    private static function getDb(){
         if(!isset(self::$database)){
            self::$database= new Database();
             return self::$database;
@@ -48,7 +48,7 @@ class Friend {
     public static function get_friends($user_id)
     {
         $q='SELECT * FROM friends WHERE user_id='.$user_id;
-        $result_set=self::getDb()->query($q);
+        $result_set=Friend::getDb()->query($q);
         if($result_set && mysqli_num_rows($result_set)){
             return $result_set;
         }else{
