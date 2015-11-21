@@ -1,8 +1,4 @@
 
-
-
-
-
 var xhr = new XMLHttpRequest();
 var dlBtn;
 window.onload= function () {
@@ -33,13 +29,27 @@ function Ajax(event) {
         var fId= event.target.parentElement.id;
         xhr.open('get', '/'+event.target.action+'/'+fId);
         xhr.setRequestHeader('AJAX','1');
-        xhr.onreadystatechange = handle;
+        xhr.onreadystatechange = function (){
+
+            if(xhr.status=200 && xhr.readyState==4){
+                var response=xhr.response;
+                console.log(response);
+                t=event;
+                switch (Number(response)) {
+
+                    case 1:event.target.previousElementSibling.innerHTML++;break;
+                    case -1:event.target.previousElementSibling.previousElementSibling.innerHTML--;break;
+                    case 2:event.target.parentElement.remove();break;
+                }
+            }
+        };
         xhr.send();
     }
 }
-function handle(){
-    if(xhr.status=200 && xhr.readyState==4){
-        var response=xhr.response;
-        console.log(response);
-    }
+
+function incrScore(){
+
 }
+var Ajax2=function(ajx,callback){
+    //{'open':'get','url',''}
+};
