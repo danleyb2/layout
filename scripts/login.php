@@ -12,6 +12,7 @@ if(isset($_GET['username'])){
         //Functions::print_prep($tru);
         $session->login($tru);
         $_SESSION['message']= 'Logged in successfully';
+        Functions::redirect('main');
     }else{
         $_SESSION['message']= 'Wrong username password combination';
     }
