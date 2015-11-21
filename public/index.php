@@ -29,10 +29,11 @@ $path=Functions::get_path();
 if(!$session->is_logged_in()){$path['call_utf8']='login';}
 if(isset($_SERVER['HTTP_AJAX'])){
     ob_clean();
-    echo 'ajax';
+
     $function=$path['call_parts'][0].'_friend';
+    //echo $function;
     $ajax=new Ajax();
-    echo is_callable(array($ajax,$function))?call_user_func($ajax->{$function}($path['call_parts'][1])):'Wrong action';
+    echo is_callable(array($ajax,$function))?call_user_func( array($ajax,$function),($path['call_parts'][1]) ):'Wrong action';
 
     exit();
 }
@@ -49,14 +50,14 @@ if(count($path['call_parts'])>1){
 $view=($path['call_utf8']=='')?'main':$path['call_utf8'];
 $header=true;
 $footer=true;
-if(!(file_exists(VIEWS.DS.$view.'.phtml')|file_exists(VIEWS.DS.$view.'.php'))){
+if(!(file_exists(VIEWS.DS.$view.'.phtml')|file_exists(SCRIPTS.DS.$view.'.php'))){
     disp404();
     exit();
 }
 
 //run php script
 /** @noinspection PhpIncludeInspection */
-include_once VIEWS.DS.$view.'.php';
+include_once SCRIPTS.DS.$view.'.php';
 
 //include layout
     //start caching
