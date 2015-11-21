@@ -35,7 +35,7 @@ class User {
             $p.=$prop;
         }*/
     }
-    private function getDb(){
+    private static function getDb(){
         if(!self::$database){
            self::$database= new Database();
             return self::$database;
