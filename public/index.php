@@ -26,14 +26,15 @@ function disp500(){
 }
 $path=Functions::get_path();
 
-if(!$session->is_logged_in()){$path['call_utf8']='login';}
+#if(!$session->is_logged_in()){$path['call_utf8']='login';}
 if(isset($_SERVER['HTTP_AJAX'])){
     ob_clean();
 
     $function=$path['call_parts'][0].'_friend';
+    
     $ajax=new Ajax();
     echo is_callable(array($ajax,$function))?call_user_func( array($ajax,$function),($path['call_parts'][1]) ):'Wrong action';
-
+    ob_end_flush();
     exit();
 }
 if(count($path['call_parts'])>1){
