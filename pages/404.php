@@ -17,6 +17,7 @@
         border-radius: 4px;
         width:50%;
         margin:auto;
+        overflow: auto;
     }
 
 </style>
