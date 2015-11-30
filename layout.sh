@@ -2,7 +2,7 @@
 
 
 #layout.sh new <app-name>
-sourceroot=`pwd`
+sourceroot=$( dirname $( readlink -m $0 ) )
 
 if [ "$1" == "new" ]; then
 	##
