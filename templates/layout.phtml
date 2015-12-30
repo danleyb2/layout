@@ -16,13 +16,13 @@
 
 <body>
     <?php
-    !$header? :include_once TEMPLATES.DS.'header.phtml';
+    !$this->header? :include_once TEMPLATES.DS.'header.phtml';
 
 
-    require_once VIEWS.DS.$view.'.phtml';
+    require_once VIEWS.DS.$this->view_name.'.phtml';
 
 
-    !$footer? :include_once TEMPLATES.DS.'footer.phtml';
+    !$this->footer? :include_once TEMPLATES.DS.'footer.phtml';
     ?>
 </body>
 
