@@ -68,30 +68,36 @@ class Functions {
     }
 
     public static function print_prep($obj){
-        echo '<pre>';
+        echo "\n".'<pre>';
         print_r($obj);
-        echo '</pre>';
+        echo "\n".'</pre>';
     }
 
     public static function get_path(){
         $path=array();
         if(isset($_SERVER['REQUEST_URI'])){
-
             $request_path=explode('?',$_SERVER['REQUEST_URI']);
+            //self::print_prep($request_path);
+            $path['path']=$request_path[0];
             $path['base']=rtrim(dirname($_SERVER['SCRIPT_NAME']),'\/');
             $path['call_utf8']=substr(urldecode($request_path[0]),strlen($path['base'])+1);
             $path['call']=utf8_decode($path['call_utf8']);
             if($path['call']==basename($_SERVER['PHP_SELF'])){
                 $path['call']='';
             }
+
             $path['call_parts']=explode('/',rtrim($path['call'],'/'));
-            $path['query_utf8']=urldecode($request_path[1]);
-            $path['query']=utf8_decode(urldecode($request_path[1]));
-            $vars=explode('&',$path['query']);
-            foreach ($vars as $var){
-                $t=explode('=',$var);
-                $path['query_vars'][$t[0]]=$t[1];
+            if (isset($request_path[1])) {
+                $q_path = $request_path[1];
+                $path['query_utf8'] = urldecode($q_path);
+                $path['query'] = utf8_decode(urldecode($q_path));
+                $vars = explode('&', $path['query']);
+                foreach ($vars as $var) {
+                    $t = explode('=', $var);
+                    $path['query_vars'][$t[0]] = $t[1];// todo bug in empty query params
+                }
             }
+
         }
         return $path;
     }
