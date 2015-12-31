@@ -1,4 +1,6 @@
 <?php
+use core\Request;
+
 /**
  * Created by PhpStorm.
  * User: brian
@@ -71,25 +73,6 @@ class Router {
                     #echo "<br>\nREGEX WAS: ";Functions::print_prep($rg);
                     #echo "<br>\nSTRING WAS: ";Functions::print_prep($p);
 
-                    $request = array();//Todo turn into an Object
-                    #Functions::print_prep($this->routes_array[$controller][key($routes)]);
-                    $f = array();
-                    $c = preg_match_all("/\/:[\w]+/", $this->routes_array[$controller][key($routes)], $f);//todo TEST
-                    if ($c) {
-                        //Functions::print_prep($f[0]);
-                        //Functions::print_prep($pt);
-                        foreach ($f[0] as $i => $param_name) {
-                            $request[ltrim($param_name, '/:')] = $pt[$i + 1];
-                        }
-
-                    }
-
-                    //Functions::print_prep($pt);
-                    //echo "\t\t Controller is [:] ".$controller;
-                    #Functions::print_prep($request);
-                    /** @noinspection PhpIncludeInspection */
-                    //exit();
-                    //require_once CONTROLLERS . DS .'test.php';
                     $controller_file=CONTROLLERS . DS . $controller . '.php';
                     if(file_exists($controller_file)){
                         /** @noinspection PhpIncludeInspection */
@@ -97,6 +80,27 @@ class Router {
                     }else{
                         throw new Exception('Controller file ['.$controller_file.'] does not exist.');
                     }
+
+                    $request = new Request($cont=new $controller());
+                    #Functions::print_prep($this->routes_array[$controller][key($routes)]);
+                    $f = array();
+                    $c = preg_match_all("/\/:[\w]+/", $this->routes_array[$controller][key($routes)], $f);//todo TEST
+                    if ($c) {
+                        //Functions::print_prep($f[0]);
+                        //Functions::print_prep($pt);
+                        foreach ($f[0] as $i => $param_name) {
+                            $request->params[ltrim($param_name, '/:')] = $pt[$i + 1];
+                        }
+
+                    }
+                    $request->route_request();
+
+                    //Functions::print_prep($pt);
+                    //echo "\t\t Controller is [:] ".$controller;
+                    #Functions::print_prep($request);
+                    //exit();
+
+
                     exit();
                 }
                 //echo "<br>\n";
