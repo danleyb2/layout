@@ -10,6 +10,7 @@
 
 $router->route('/',                                 'home');
 $router->route('home',                              'home');
+$router->route('test',                              'test');
 $router->route('users/phone/:phone',                'one');
 $router->route('phone/:phoneno/friends/:friend_id', 'two');
 $router->route('users/phone/:phone/about',          'three');
