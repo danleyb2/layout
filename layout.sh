@@ -1,5 +1,5 @@
 #!/bin/bash
-
+# danleyb2 <ndieksman@gmail.com>
 
 #layout.sh new <app-name>
 sourceroot=$( dirname $( readlink -m $0 ) )
@@ -20,7 +20,7 @@ if [ "$1" == "new" ]; then
 		mkdir -p $destination'/cache'
 
 		mkdir -p $destination'/classes'
-		for i in '/classes/'{database,init,functions,session}'.class.php'; do 
+		for i in '/classes/'{database,init,functions,session,request,router,view,controller}'.class.php'; do
 			echo 'creating file '$i; 
 			cp $sourceroot$i $destination'/classes'
 		done
@@ -42,7 +42,7 @@ if [ "$1" == "new" ]; then
 		cp -R $sourceroot'/public' $destination
 
 		mkdir -p $destination'/scripts'
-		for i in '/scripts/'{main,about,contact}'.php'; do 
+		for i in '/scripts/'{main,about,contact}'.php'; do
 			echo 'creating file '$i; 
 			cp $sourceroot$i $destination'/scripts'
 		done
