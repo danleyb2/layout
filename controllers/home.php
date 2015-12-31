@@ -12,6 +12,16 @@ use core\Controller;
 #require_once '/home/brian/PhpstormProjects/Layout/classes/controller.class.php';
 class Home extends Controller
 {
+    /**
+     * runs on all methods.
+     * @return mixed
+     */
+    function all($req)
+    {
+        // TODO: Implement all() method.
+        require_once CONFIG.DS.'config.php';
+        //$connection=new Database();
+    }
     function get($req)
     {
         $view=new View();
@@ -47,12 +57,5 @@ class Home extends Controller
         // TODO: Implement head() method.
     }
 
-    /**
-     * runs on all methods.
-     * @return mixed
-     */
-    function all($req)
-    {
-        // TODO: Implement all() method.
-    }
+
 }
