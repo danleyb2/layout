@@ -1,4 +1,5 @@
 <?php
+namespace core;
 class Session
 {
     private $looged_in=false;
