@@ -26,16 +26,7 @@ class View{
         //define main container template name
         #if not exist-> 404
         $this->view_name=$view_name;
-        $view=$view_name;
 
-        if(!(file_exists(VIEWS.DS.$view.'.phtml')|file_exists(SCRIPTS.DS.$view.'.php'))){
-            disp404();
-            exit();
-        }
-
-        //run php script
-        /** @noinspection PhpIncludeInspection */
-        include_once SCRIPTS.DS.$view.'.php';
 
         //include layout
         //start caching
@@ -45,6 +36,16 @@ class View{
     }
     function render(){
         global $session;
+        $view=$this->view_name;
+
+        if(!(file_exists(VIEWS.DS.$view.'.phtml')|file_exists(SCRIPTS.DS.$view.'.php'))){
+            disp404();
+            exit();
+        }
+
+        //run php script
+        /** @noinspection PhpIncludeInspection */
+        include_once SCRIPTS.DS.$view.'.php';
         include_once TEMPLATES.DS.'layout.phtml';
 
     }
