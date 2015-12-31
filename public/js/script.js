@@ -30,8 +30,56 @@ var Layout=function() {
             var event = document.createEvent("CustomEvent");
             event.initCustomEvent(eventName, true, true, detail);
             el.dispatchEvent(event);
+        },
+        'Ajax':function(url){
+            var apiV=url;
+            var x=new XMLHttpRequest();
+            var onReadyStateChange=function(cb){
+                if(x.readyState==4 && x.status==200){
+                    //console.log(x.responseText);
+                    var res=JSON.parse(x.responseText);
+                    cb(res);
+                }
+            };
+
+            _DELETE= function (url,cb) {
+
+            };
+            _GET= function (url,cb) {
+                if(x.readyState==4||x.readyState==0){
+                    x.open('GET',url);
+                    x.onreadystatechange= function () {
+                        onReadyStateChange(cb);
+                    };
+                    x.send(null);
+                }
+
+            };
+            _PUT= function (url,payload,cb) {
+
+            };
+            _POST= function (url,payload,cb) {
+
+            };
+            _PATCH= function (url,payload,cb) {
+                if(x.readyState==4||x.readyState==0){
+                    x.open('PATCH',url);
+                    x.setRequestHeader("Content-Type","application/json");
+                    x.onreadystatechange= function () {
+                        onReadyStateChange(cb)
+                    };
+                    x.send(JSON.stringify(payload));
+                }
+
+            };
+            return {
+                "get":_GET,
+                "patch":_PATCH
+
+            };
         }
-    }
+
+    };
 
 }();
 
