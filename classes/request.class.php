@@ -9,7 +9,11 @@
 namespace core;
 use core\Controller;
 
-
+/**
+ * Class Request
+ * @package core
+ * @property Controller $controller
+ */
 class Request {
     public $params=array();
     private $method;
@@ -26,6 +30,10 @@ class Request {
     private function methodIs($is){
         return $this->method===$is;
     }
+
+    /**
+     *
+     */
     public function route_request(){
         //if(!$this->methodIs('GET')){return;}
         //\Functions::print_prep($this);
