@@ -8,7 +8,7 @@
 ?>
 
 <h1 style=" margin-top:20px;text-align:center;color:red;">404.</h1>
-<p class="" style="text-align:center;">The requested resource was not found.</p>
+<p class="" style="text-align:center;">The requested resource : [ <?php echo $resource; ?> ] was not found.</p>
 <style>
     pre{
         padding:3px;
@@ -23,5 +23,5 @@
 </style>
 <?php
 Functions::print_prep(Functions::get_path());
-Functions::print_prep($_SERVER);
+//Functions::print_prep($_SERVER);
 ?>
