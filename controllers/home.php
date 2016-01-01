@@ -18,18 +18,25 @@ class Home extends Controller
      */
     function all($req)
     {
-        // TODO: Implement all() method.
+        // TODO: can this be turned to __construct??
         require_once CONFIG.DS.'config.php';
         //$connection=new Database();
     }
+
+    /**
+     * @param $req
+     * @property View $view
+     */
     function get($req)
     {
-        $view=new View();
+        $view=new View($this);
         $view->create('main');
+        $view->script('main');
         $view->has_header(true);
         $view->has_footer(true);
+        $view->main_template('main',true);
         #$view->cache();
-        $view->render();
+        $view->render(true);
     }
 
     function post($req)
