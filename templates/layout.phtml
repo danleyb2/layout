@@ -8,6 +8,7 @@
     <title>Layout</title>
     <meta>
     <link type="text/css" rel="stylesheet" href="/css/style.css">
+    <link type="text/css" rel="stylesheet" href="/css/home.css">
     <style>
 
     </style>
@@ -16,12 +17,19 @@
 
 <body>
     <?php
+    /** @noinspection PhpIncludeInspection */
     !$this->header? :include_once TEMPLATES.DS.'header.phtml';
 
 
-    require_once VIEWS.DS.$this->view_name.'.phtml';
+    if($this->main_is_file){
+        /** @noinspection PhpIncludeInspection */
+        require_once VIEWS.DS.$this->view_name.'.phtml';
+    }else{
+        echo $this->view_name;
+    }
 
 
+    /** @noinspection PhpIncludeInspection */
     !$this->footer? :include_once TEMPLATES.DS.'footer.phtml';
     ?>
 </body>
