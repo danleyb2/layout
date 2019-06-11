@@ -8,6 +8,7 @@
 
 class NoControllerException extends Exception{
     private $controller_file;
+    private $route;
     public function setControllerFile($controller_file)
     {
         $this->controller_file=$controller_file;
@@ -19,5 +20,22 @@ class NoControllerException extends Exception{
     public function getControllerFile()
     {
         return $this->controller_file;
+    }
+
+    /**
+     * @param mixed $route
+     */
+    public function setRoute($route)
+    {
+        $this->route = $route;
+    }
+
+
+    /**
+     * @return mixed
+     */
+    public function getRoute()
+    {
+        return $this->route;
     }
 }

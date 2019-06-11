@@ -94,7 +94,9 @@ class Functions {
                 $vars = explode('&', $path['query']);
                 foreach ($vars as $var) {
                     $t = explode('=', $var);
-                    $path['query_vars'][$t[0]] = $t[1];// todo bug in empty query params
+                    $path['query_vars'][$t[0]] = $t[1];
+                    // todo bug in empty query params
+                    // todo bug Notice when e.g ?danleyb2@gmail.com
                 }
             }
 

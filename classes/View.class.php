@@ -93,7 +93,7 @@ class View{
                     '
                 );
                 $this->view_name = $error->getViewName();
-                $this->data['LayoutError']=$error;
+                $this->data['error']=$error;
                 //exit();
             }
         }

@@ -79,7 +79,11 @@ class Router {
                         /** @noinspection PhpIncludeInspection */
                         include_once $controller_file;
                     }else{
-                        throw new Exception('Controller file ['.$controller_file.'] does not exist.');
+                        $exception = new NoControllerException('Controller file ['.$controller_file.'] does not exist.');
+                        $exception->setRoute($p);
+                        $exception->setControllerFile($controller_file);
+
+                        throw $exception;
                     }
 
                     $request = new Request($cont=new $controller());
@@ -108,7 +112,10 @@ class Router {
             }
         }
         //todo no controller page
-        dispNoController($p,$controller_file);
+
+        $exception = new NoRouteException($p);
+
+        throw $exception;
 
     }
 }

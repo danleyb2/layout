@@ -27,7 +27,7 @@ class ErrorController extends Controller
         //global $message;
         //echo $message;exit;
         $view=new View($this);
-        $view->data['LayoutError']=$this->data['LayoutError'];
+        $view->data['error']=$this->data['error'];
         $view->create('error');//todo render error view
         $view->has_header(true);
         $view->has_footer(true);

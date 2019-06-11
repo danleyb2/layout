@@ -7,5 +7,6 @@
  */
 
 class NoRouteException extends Exception{
+    # todo store path
 
 }

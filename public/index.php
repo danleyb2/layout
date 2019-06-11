@@ -14,7 +14,10 @@ function dispHome(){
     /** @noinspection PhpIncludeInspection */
     include_once TEMPLATES.DS.'layout.phtml';
 }
-function dispNoController($route,$controller_file ){
+function dispNoController($e ){
+    $route = $e->getRoute();
+    $controller_file = $e->getControllerFile();
+
     $error=new LayoutError("No Controller Error.");
     //$error->setHeading("No Controller Error.");
     $error->setMessage(
@@ -26,7 +29,7 @@ function dispNoController($route,$controller_file ){
     /** @noinspection PhpIncludeInspection */
     require_once CONTROLLERS . DS . 'core' .DS. $controller.'.php';
     $controller_obj=new $controller();
-    $controller_obj->data['LayoutError']=$error;
+    $controller_obj->data['error']=$error;
     $request=new Request($controller_obj);
     $request->route_request();
 
@@ -85,7 +88,8 @@ require_once SITE_ROOT.DS.'_router/routes.php';
 try {
     $router->run();
 }catch (NoControllerException $e){
-    dispNoController($e->getMessage(),$e->getControllerFile());
+    dispNoController($e);
+
 }catch (NoRouteException $e){
     disp404($e->getMessage());
 }
