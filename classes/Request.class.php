@@ -18,6 +18,11 @@ class Request {
     public $params=array();
     private $method;
     private $controller;
+
+    public $get;
+    public $post;
+    public $files;
+
     function __construct($controller){
         $this->method=$_SERVER['REQUEST_METHOD'];
         $this->get=$_GET;
