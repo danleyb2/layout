@@ -8,7 +8,7 @@
 
 defined('DBHOST')? :define('DBHOST','localhost');
 defined('DBUSER')? :define('DBUSER','root');
-defined('DBPASSWORD')? :define('DBPASSWORD','#####');
+defined('DBPASSWORD')? :define('DBPASSWORD','pass');
 defined('DB')? :define('DB','test');
 
 ?>

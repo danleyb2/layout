@@ -1,0 +1,18 @@
+AuthName "xampp user"                 
+AuthType Basic    
+AuthUserFile /opt/lampp/lib/xampp.users
+#require valid-user 
+
+
+#<IfModule mod_rewrite.c>
+ #   RewriteEngine on
+  #  RewriteCond %{REQUEST_FILENAME} !-f
+  #  RewriteRule ^ public/500.php [L]
+#</IfModule>
+
+#<IfModule mod_rewrite.c>
+  #  RewriteEngine on
+    #RewriteCond %{REQUEST_FILENAME} !-f
+    #RewriteCond %{REQUEST_FILENAME} !-d
+ #   RewriteRule ^ public/router.php [L]
+#</IfModule>

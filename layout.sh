@@ -12,24 +12,35 @@ if [ "$1" == "new" ]; then
 		if [ -z $3 ]; then
 			destination=`pwd`
 		else
-			destination=$3
+			destination=`echo $3|sed 's/\/$//'`
 		fi
 		destination=$destination'/'$appname
 		echo -e "[*] creating new app [\033[0;31m $appname \033[00m] in $destination"
 		mkdir -p $destination
+		#creating cache dir
 		mkdir -p $destination'/cache'
 
-		mkdir -p $destination'/classes'
-		for i in '/classes/'{database,init,functions,session,request,router,view,controller}'.class.php'; do
-			echo 'creating file '$i; 
-			cp $sourceroot$i $destination'/classes'
+		#creating Classes dir
+		cp -R $sourceroot'/classes' $destination'/classes'
+		#mkdir -p $destination'/classes'
+		#for i in '/classes/'{database,init,functions,session,request,router,view,controller}'.class.php'; do
+		#	echo 'creating file '$i;
+		#	cp $sourceroot$i $destination'/classes'
+		#done
+
+		#creating Controllers dir
+		mkdir -p $destination'/controllers/core'
+		for i in '/controllers/'{home,test}'.php'; do
+			echo 'creating file '$i;
+			cp $sourceroot$i $destination'/controllers'
 		done
 
-		
 
+		#creating Config dir
 		mkdir -p $destination'/config'
 		cp $sourceroot'/config/config.php' $destination'/config'
 
+		#creating Pages dir
 		mkdir -p $destination'/pages'
 		for i in '/pages/'{404,500}'.php'; do 
 			echo 'creating file '$i; 
@@ -49,10 +60,12 @@ if [ "$1" == "new" ]; then
 
 
 		mkdir -p $destination'/templates'
-		for i in '/templates/'{footer,header,layout}'.phtml'; do 
+		sed -e "s/Layout/$appname/" $sourceroot'/templates/header.phtml' > $destination'/templates/header.phtml'
+		for i in '/templates/'{footer,layout}'.phtml'; do
 			echo 'creating file '$i; 
 			cp $sourceroot$i $destination'/templates'
 		done
+
 
 
 		mkdir -p $destination'/views'
@@ -60,7 +73,7 @@ if [ "$1" == "new" ]; then
 			echo 'creating file '$i; 
 			cp $sourceroot$i $destination'/views'
 		done
-		echo '[*] complete.. run php -S localhost:3000 -t '$destination'/public'
+		echo -e '[*] complete.. run \n\n\t\tphp -S localhost:3000 -t '$destination'/public \n and check it out.'
 	fi
 	
 fi

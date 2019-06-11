@@ -1,0 +1,61 @@
+<h4>New User</h4>
+<style>
+form{
+    width:50%;
+    margin: auto;
+    padding: 5px;
+    box-sizing: border-box;
+}
+form>div{
+    margin-bottom: 2px;
+}
+label{
+    display: inline-block;
+    width:30%;
+}
+input{
+    /*border-left: 0;
+    border-right: 0;*/
+    display: inline-block;
+    width: 68%;
+    box-sizing: border-box;
+
+}
+    input[type='submit']{
+       width: 70%;
+        border: 4px;
+       margin-left: 30%;
+        display: block;
+    }
+</style>
+
+<div>
+    <p>Enter Info.</p>
+<div></div>
+    <form method="post" action="/signup">
+        <div>
+            <label for="fn">First name</label>
+            <input type="text" id="fn" name="first_name">
+        </div>
+
+        <div>
+            <label for="ln"> Last name </label>
+            <input type="text" id="ln" name="last_name">
+        </div>
+
+        <div><label for="un">Username </label>
+            <input type="text" id="un" name="username">
+        </div>
+
+        <div><label for="pass">Password </label>
+            <input type="text" id="pass" name="password">
+        </div>
+
+        <div><label for="age">Age </label>
+            <input type="text" id="age" name="age">
+        </div>
+
+        <input type="submit" value="signup">
+    </form>
+
+</div>

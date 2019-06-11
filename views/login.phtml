@@ -1,0 +1,19 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: brian
+ * Date: 11/13/15
+ * Time: 4:52 PM
+ */
+
+?>
+<?php if(isset($_SESSION['message'])){?>
+<p><?php echo $_SESSION['message']; unset($_SESSION['message']);?></p>
+<?php }?>
+<div>
+    <form action="/login">
+        <input type="text" value="danleyb2" name="username">
+        <input type="text" value="pass" name="password">
+        <input type="submit" value="login" name="">
+    </form>
+</div>
