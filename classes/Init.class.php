@@ -30,7 +30,8 @@ final class Init{
         //echo $className;
         $parts=explode('\\',$className);
         $fl= end($parts);
-        $class_file=CLASSES.DS.strtolower($fl).'.class.php';
+        #$class_file=CLASSES.DS.strtolower($fl).'.class.php';
+        $class_file=CLASSES.DS.$fl.'.class.php';
         if(!file_exists($class_file)){
             exit('Class ['.$className.'] could not be loaded.<br> Looked in ['.$class_file.']');
         }

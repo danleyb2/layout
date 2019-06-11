@@ -20,6 +20,10 @@ if [ "$1" == "new" ]; then
 		#creating cache dir
 		mkdir -p $destination'/cache'
 
+        #creating Routes dir
+        cp -R $sourceroot'/_router' $destination'/_router'
+
+
 		#creating Classes dir
 		cp -R $sourceroot'/classes' $destination'/classes'
 		#mkdir -p $destination'/classes'
@@ -30,9 +34,9 @@ if [ "$1" == "new" ]; then
 
 		#creating Controllers dir
 		mkdir -p $destination'/controllers/core'
-		for i in '/controllers/'{home,test}'.php'; do
+		for i in '/controllers/'{home,test,core/ErrorController}'.php'; do
 			echo 'creating file '$i;
-			cp $sourceroot$i $destination'/controllers'
+			cp $sourceroot$i $destination$i
 		done
 
 
@@ -69,7 +73,7 @@ if [ "$1" == "new" ]; then
 
 
 		mkdir -p $destination'/views'
-		for i in '/views/'{main,about,contact}'.phtml'; do 
+		for i in '/views/'{main,about,contact,error}'.phtml'; do
 			echo 'creating file '$i; 
 			cp $sourceroot$i $destination'/views'
 		done

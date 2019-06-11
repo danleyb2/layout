@@ -85,7 +85,7 @@ class View{
             if (!(file_exists($view_file_markup) | file_exists($view_file_script))) {
                 //dispNoView();
 
-                $error=new Error("View File Missing Error.");
+                $error=new LayoutError("View File Missing Error.");
                 $error->setMessage(
                     'View file :[ '.$view_file_markup.' ] missing.<br>
                      View script:[ '.$view_file_script.' ] missing.<br>
@@ -93,7 +93,7 @@ class View{
                     '
                 );
                 $this->view_name = $error->getViewName();
-                $this->data['error']=$error;
+                $this->data['LayoutError']=$error;
                 //exit();
             }
         }

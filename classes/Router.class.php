@@ -57,6 +57,7 @@ class Router {
         #echo 'PATH : '.$p;  echo "<br>\n\n";
         #Functions::print_prep($this->routes_array);
         #Functions::print_prep($this->routes_regex);
+        $controller_file = null;
 
         foreach ($this->routes_regex as $controller =>$routes ) {
             #Functions::print_prep($routes);
@@ -107,7 +108,7 @@ class Router {
             }
         }
         //todo no controller page
-        dispNoController($p);
+        dispNoController($p,$controller_file);
 
     }
 }

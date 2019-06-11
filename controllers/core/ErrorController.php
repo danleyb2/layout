@@ -27,11 +27,11 @@ class ErrorController extends Controller
         //global $message;
         //echo $message;exit;
         $view=new View($this);
-        $view->data['error']=$this->data['error'];
-        $view->create('error_view');//todo render error view
+        $view->data['LayoutError']=$this->data['LayoutError'];
+        $view->create('error');//todo render error view
         $view->has_header(true);
         $view->has_footer(true);
-        $view->main_template('error_view',true);
+        $view->main_template('error',true);
         #$view->cache();
         $view->render(false);
     }

@@ -7,9 +7,9 @@
  * Time: 3:31 PM
  */
 
-class Error {
+class LayoutError {
     private $message,$heading;
-    private $view_name='error_view';
+    private $view_name='error';
 
     function __construct($error_heading){
         $this->heading=$error_heading;
@@ -46,7 +46,7 @@ class Error {
     /**
      * @param mixed $view_name
      */
-    public function setViewName($view_name='error_view')
+    public function setViewName($view_name='error')
     {
         $this->view_name = $view_name;
     }

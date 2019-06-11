@@ -1,7 +1,7 @@
 <?php
 use core\Request;
 
-require_once '../classes/init.class.php';
+require_once '../classes/Init.class.php';
 
 
 /**
@@ -15,18 +15,18 @@ function dispHome(){
     include_once TEMPLATES.DS.'layout.phtml';
 }
 function dispNoController($route,$controller_file ){
-    $error=new Error("No Controller Error.");
+    $error=new LayoutError("No Controller Error.");
     //$error->setHeading("No Controller Error.");
     $error->setMessage(
         'No controller available called :[ '.$route.' ]<br>'.
         'Controller file searched for the class was ['.$controller_file.']  .<b> It doesn\'t Exist</b>'
     );
 
-    $controller='errorcontroller';
+    $controller='ErrorController';
     /** @noinspection PhpIncludeInspection */
     require_once CONTROLLERS . DS . 'core' .DS. $controller.'.php';
     $controller_obj=new $controller();
-    $controller_obj->data['error']=$error;
+    $controller_obj->data['LayoutError']=$error;
     $request=new Request($controller_obj);
     $request->route_request();
 
